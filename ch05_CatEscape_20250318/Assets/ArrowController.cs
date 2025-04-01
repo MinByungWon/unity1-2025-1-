@@ -90,6 +90,19 @@ public class ArrowController : MonoBehaviour
         */
         if (fArrowPlayerDistance < fArrowRadius + fPlayerRadius)
         {
+            /*
+             * 플레이어가 화살에 맞으면 화살 컨트롤로에서 감독 스크립트(GameDirector)의 f_DecreaseHp() 메서드를 호출
+             *   즉, ArrowController에서 GameDirector 오브젝트에 있는 f_DecreaseHp() 메서드를 호출하기 때문에
+             *   Find 메서드를 찾아서 GameDirector 오브젝트를 찾는다.   
+            */
+            GameObject gDirector = GameObject.Find("GameDirector");
+
+            /*
+             * GetComponent 메서드를 사용해 GameDirector 오브젝트의 GameDirector 스크립트를 구하고,
+             *   f_DecreaseHp() 메서드를 구출하여, 감독 스크립트에 플레이어와 화살이 충돌했다고 전달
+            */
+            gDirector.GetComponent<GameDirector>().f_DecreaseHp();
+
             Destroy(gameObject);  // 화살과 플레이어 충돌, 화살 오브젝트를 소멸
         }
 
