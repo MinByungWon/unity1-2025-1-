@@ -7,12 +7,9 @@ using UnityEngine.UI; // UI 오브젝트를 스크립트에서 조작하기 위해서 임포트
 public class GameDirector : MonoBehaviour
 {
     // HP 게이지를갱신하려면 감독 스크립트가 HP 게이지의 실체를 조작하기 위해서 GameObject 변수 선언
-    Image hpGauge;
-
+    Image hpGauge = null;
     public GameObject txtGameOverMessage = null;  // UI(Text) : txtGameOverMessage GameObject 변수
-
     public GameObject btnReStart = null; // UI(Button) : btnReStart GameObject 변수
-
     bool isRun = false;  // 게임 재시작 저장 변수
 
     // Start is called before the first frame update
@@ -36,7 +33,7 @@ public class GameDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     // 화살 컨트롤러에서 HP 게이지 표시를 줄이는 처리를 호출하기 위해서 public 메서드로 작성
@@ -72,7 +69,7 @@ public class GameDirector : MonoBehaviour
         isRun = true;
 
         ArrowController[] arrowControllers = FindObjectsOfType<ArrowController>();
-        for (int i = arrowControllers.Length -1 ; i >= 0; i++)
+        for (int i = arrowControllers.Length - 1; i >= 0; i++)
         {
             Destroy(arrowControllers[i].gameObject);
         }
