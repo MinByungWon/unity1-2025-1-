@@ -6,7 +6,9 @@
  */
 
 
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -128,6 +130,17 @@ public class PlayerController : MonoBehaviour
         {
             m_animatorCat.speed = 1.0f;
         }
-
     }
+
+    // 플레이어가 깃발에 닿으면 게임이 종료됨
+    //   이 경우게임 씬에서 클리어 씬으로 전환되어야 함
+    // 플레이어가 깃발에 닿았는지는 OnTriggerEnter2D 메서드로 감지함
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("골!!");
+
+        SceneManager.LoadScene("ClearScene");
+    }
+
+
 }
