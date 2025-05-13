@@ -1,0 +1,56 @@
+/*
+ * 스페이스바를 누르면 밤송이가 과녁을 향해 날아가는 동작 제어 
+ * 
+ */
+
+
+using UnityEngine;
+
+public class BamsongiController : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        /* 
+         * 디바이스 성능에 따른 실행 결과의 차이 없애기
+         *   어떤 성능의 컴퓨터에서 동작해도 같은 속도로 움직이도록 하는 처리
+         *   스마트폰은 60, 고속의 PC는 300이 될 수 있는 디바이스 성능에 따라 게임 동작에 영향을 미칠 수 있음
+         *   프레임레이트를 60으로 고정
+        */
+        Application.targetFrameRate = 60;
+
+        /*
+         * 밤송이가 화면 안쪽으로 날아가도록 +Z축 방향의 벡터를 매개변수로 전달하고 f_TargetShoot 메서드를 호출
+         * Y축 방향으로 힘을 200 가하는 이유는 밤송이가 과녁에 닿기 전에 중력의 영향을 받아 지면으로 낙하하는 것을 막기 위함
+         * Start 메서드에서 f_TargetShoot 메서드를 호출하므로 게임 시작과 동시에 날아감
+        */
+        //f_TargetShoot(new Vector3(0, 200, 2000));
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    // 확장성을 고려해 매개변수에서 지정한 방향으로 힘을 가하는 메서드
+    public void f_TargetShoot(Vector3 argvDir)
+    {
+        // 매개변수로 전달된 Vector 값으로 힘을 가한다.
+        GetComponent<Rigidbody>().AddForce(argvDir);
+
+    }
+
+    // Physics를 사용하므로 과녁과 밤송이가 충돌하면 OnCollisionEnter 메서드가 호출되어 실행됨
+    private void OnCollisionEnter(Collision collision)
+    {
+        // 밤송이가 과녁에 닿는 순간 밤송이 움직임이 멈추므로, Rigidbody 컴포넌트의 isKinematic 메서드를 true로 설정
+        //   isKinematic 메서드를 true로 설정 하면, 오브젝트에 작용하는 힘을 무시하고 밤송이를 정지시킴
+        //   isKinematic 메서드 : 외부에서 가해지는 물리적 힘에 반응하지 않는 오브젝트라는 의미. 중력과 충돌에 반응하지 않도록 함
+        GetComponent<Rigidbody>().isKinematic = true;
+
+        // GetComponent 메서드를 사용해 ParticleSystem 컴포너트를 구하고, ParticleSystem 가진 Play 메서드를 호출해 파티클을 재생
+        GetComponent<ParticleSystem>().Play();  
+    }
+
+}
