@@ -16,7 +16,7 @@ public class BamsongiController : MonoBehaviour
          *    지면으로 낙하하는 것을 막기 위함
          * Start 메서드를 호출하는 시작과 동시에 밤송이가 과녁으로 날아감
         */
-        f_TargetShoot(new Vector3(0, 200, 2000));
+        //f_TargetShoot(new Vector3(0, 200, 2000));
     }
 
     // Update is called once per frame

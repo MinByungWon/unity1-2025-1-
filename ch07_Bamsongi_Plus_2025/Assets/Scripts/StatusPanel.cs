@@ -6,6 +6,7 @@ public class StatusPanel : MonoBehaviour
 {
     [SerializeField]
     TextMeshProUGUI Score;
+
     [SerializeField]
     TextMeshProUGUI Count;
 
@@ -27,6 +28,6 @@ public class StatusPanel : MonoBehaviour
 
     public void SetCount(int restCount)
     {
-        Count.text = $"{restCount} / {_maxCount}";  
+        Count.text = $"{restCount} / {_maxCount}";
     }
 }

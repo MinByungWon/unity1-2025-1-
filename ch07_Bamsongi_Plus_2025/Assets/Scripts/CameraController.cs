@@ -19,12 +19,12 @@ public class CameraController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if(_startCam != null)
+        if (_startCam != null)
         {
             _startCam.transform.position = transform.position; // 메인카메라와 같은 위치
 
             _startCam.Priority = 1; // 시작 카메라 우선순위를 위로
-          }
+        }
         else
         {
             Debug.LogError("_startCam is null");

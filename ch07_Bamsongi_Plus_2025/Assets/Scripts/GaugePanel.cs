@@ -9,6 +9,7 @@ public class GaugePanel : MonoBehaviour
 {
     [SerializeField]
     Image _gaugeBar = null; // 변화할 Image
+
     [SerializeField]
     Image _gaugeBarSpace = null; //최대 너비 계산용
 
@@ -35,7 +36,7 @@ public class GaugePanel : MonoBehaviour
         }
 
         float currentWidth = _maxWidth * powerRate; // 최대 너비에 현재 파워 비율 곱하기
-        Vector2 sizeDelta = _gaugeBar.rectTransform.sizeDelta; 
+        Vector2 sizeDelta = _gaugeBar.rectTransform.sizeDelta;
         sizeDelta.x = currentWidth; //x 너비를 변경
         _gaugeBar.rectTransform.sizeDelta = sizeDelta; //적용
     }
