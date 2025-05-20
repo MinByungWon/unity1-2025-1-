@@ -6,6 +6,7 @@ public class GameResultPanel : MonoBehaviour
 {
     [SerializeField]
     TextMeshProUGUI Score = null;
+
     [SerializeField]
     Button RetryBtn = null;
 

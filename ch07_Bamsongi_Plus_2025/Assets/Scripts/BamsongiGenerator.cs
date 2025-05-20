@@ -58,6 +58,7 @@ public class BamsongiGenerator : MonoBehaviour
             if (GameManager.Instance.RestCount <= 0)
             {
                 _isClick = false;
+
                 return;
             }
             // 현재프레임에서 마우스가 눌러졌을 시 한번
@@ -70,9 +71,12 @@ public class BamsongiGenerator : MonoBehaviour
         {
             // 현재 프레임에서 마우스를 뗏을 시
             _isClick = false;
+
             Debug.Log("클릭 up");
+
             // 밤송이 생성
             GenerateBamsongi();
+
             GameManager.Instance.CickUp();
         }
     }

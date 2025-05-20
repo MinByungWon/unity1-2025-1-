@@ -11,7 +11,7 @@ public class BamsongiGenerator : MonoBehaviour
     GameObject insBamsongiPrefab = null;
 
     // ¹ã¼ÛÀÌ ¿ùµå ÁÂÇ¥ 
-    Vector3 vBamsongWorldDir = Vector3.zero;
+    Vector3 vBamsongiWorldDir = Vector3.zero;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,9 +40,9 @@ public class BamsongiGenerator : MonoBehaviour
 
             Ray ScreenPointToRayBamsongi = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            vBamsongWorldDir = ScreenPointToRayBamsongi.direction;
+            vBamsongiWorldDir = ScreenPointToRayBamsongi.direction;
 
-            insBamsongiPrefab.GetComponent<BamsongiController>().f_TargetShoot(vBamsongWorldDir.normalized * 2000);
+            insBamsongiPrefab.GetComponent<BamsongiController>().f_TargetShoot(vBamsongiWorldDir.normalized * 2000);
         }
     }
 }

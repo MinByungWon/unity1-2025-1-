@@ -8,8 +8,10 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField, Tooltip("시작지점 카메라")]
     CinemachineCamera _startCam;
+
     [SerializeField, Tooltip("종료지점 카메라")]
     CinemachineCamera _endCam;
+
     private CinemachineBrain _brain = null;
 
     Coroutine _coroutine = null; // 코루틴 제어변수
@@ -20,6 +22,7 @@ public class CameraController : MonoBehaviour
         if(_startCam != null)
         {
             _startCam.transform.position = transform.position; // 메인카메라와 같은 위치
+
             _startCam.Priority = 1; // 시작 카메라 우선순위를 위로
           }
         else
@@ -48,6 +51,7 @@ public class CameraController : MonoBehaviour
     public void CameraMove()
     {
         GameManager.Instance.CanClick = false; // 카메라 움직일때는 발사 못하도록 설정
+
         if (_coroutine == null)
         {
             _coroutine = StartCoroutine(CorMoveCamera());
